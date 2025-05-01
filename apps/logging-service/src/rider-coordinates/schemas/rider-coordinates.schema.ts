@@ -4,14 +4,14 @@ import {HydratedDocument} from 'mongoose';
 export type RiderCoordinateDocument = HydratedDocument<RiderCoordinate>;
 
 @Schema()
-class RiderCoordinate {
+export class RiderCoordinate {
   @Prop({required: true})
-lat: string; //l'attitude
+  lat: number; //l'attitude
 
   @Prop({required: true})
   lng: number; //longitude
 
   @Prop({required: true})
-  rider: number; 
+  riderId: string; 
 }
 export const RiderCoordinateSchema = SchemaFactory.createForClass(RiderCoordinate);
