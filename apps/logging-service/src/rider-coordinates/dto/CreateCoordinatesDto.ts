@@ -1,15 +1,15 @@
-import { IsNotEmpty, IsNumber,IsString } from "class-validator";
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-export class CreateCoordinatesDto{
-    @IsNumber()
-    @IsNotEmpty()
-    lng: number;
+export class CreateCoordinatesDto {
+  @IsNumber()
+  @IsNotEmpty()
+  lat: number;  // latitude
 
-    @IsNumber()
-    @IsNotEmpty()
-    lat: number;
+  @IsNumber()
+  @IsNotEmpty()
+  lng: number;  // longitude
 
-    @IsString()
-    @IsNotEmpty()
-    riderId: string ;
+  @IsString()
+  @IsNotEmpty()
+  riderId: string;
 }

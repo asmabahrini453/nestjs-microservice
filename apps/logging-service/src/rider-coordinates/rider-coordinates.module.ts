@@ -1,18 +1,25 @@
 import { Module } from '@nestjs/common';
 import { RiderCoordinatesController } from './rider-coordinates.controller';
 import { RiderCoordinatesService } from './rider-coordinates.service';
-import { MongooseModule } from '@nestjs/mongoose';
-import { RiderCoordinate,RiderCoordinateSchema } from './schemas/rider-coordinates.schema';
+import { RiderCoordinate } from './schemas/rider-coordinates.schema';
 import { ClientsModule, Transport } from '@nestjs/microservices';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  //forFeature inject the mongoose models into the module here it is the rider coordinates model
   imports:[
-    MongooseModule.forFeature([{name: RiderCoordinate.name, schema: RiderCoordinateSchema}]), 
-    //inject rider service into the RiderCoordinatesModule
-    ClientsModule.register([
-      {name: 'RIDER_SERVICE', transport: Transport.TCP, options: {host: 'localhost', port: 3002}},
+    TypeOrmModule.forFeature([RiderCoordinate]),  
+        ClientsModule.register([
+      {
+        name: 'RIDER_SERVICE',
+        transport: Transport.RMQ,
+        options: {
+          urls: ['amqp://localhost:5672'],
+          queue: 'rider_queue',
+          queueOptions: { durable: false },
+        },
+      },
     ])
+    
   ],
   controllers: [RiderCoordinatesController],
   providers: [RiderCoordinatesService]

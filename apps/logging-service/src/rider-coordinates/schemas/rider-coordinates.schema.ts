@@ -1,17 +1,16 @@
-import {Prop, Schema, SchemaFactory} from '@nestjs/mongoose';
-import {HydratedDocument} from 'mongoose';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-export type RiderCoordinateDocument = HydratedDocument<RiderCoordinate>;
-
-@Schema()
+@Entity()
 export class RiderCoordinate {
-  @Prop({required: true})
-  lat: number; //l'attitude
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-  @Prop({required: true})
-  lng: number; //longitude
+  @Column()
+  riderId: string;
 
-  @Prop({required: true})
-  riderId: string; 
+  @Column('float')
+  lat: number;  // latitude
+
+  @Column('float')
+  lng: number;  // longitude
 }
-export const RiderCoordinateSchema = SchemaFactory.createForClass(RiderCoordinate);

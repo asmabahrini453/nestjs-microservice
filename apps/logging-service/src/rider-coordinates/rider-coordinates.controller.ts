@@ -1,33 +1,23 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { CreateCoordinatesDto } from './dto/CreateCoordinatesDto';
+import { Controller, Get, Param, Post, Body } from '@nestjs/common';
 import { RiderCoordinatesService } from './rider-coordinates.service';
+import { CreateCoordinatesDto } from './dto/CreateCoordinatesDto';
 
 @Controller('rider-coordinates')
 export class RiderCoordinatesController {
-  constructor(private coordinatesService: RiderCoordinatesService) {}
+  constructor(private readonly riderCoordinatesService: RiderCoordinatesService) {}
+
+  @Post()
+  async saveRiderCoordinates(@Body() createCoordinatesDto: CreateCoordinatesDto) {
+    return await this.riderCoordinatesService.saveRiderCoordinates(createCoordinatesDto);
+  }
 
   @Get()
   async getRiderCoordinates() {
-    return await this.coordinatesService.getRiderCoordinates();
+    return await this.riderCoordinatesService.getRiderCoordinates();
   }
-
-  // @Get(':id')
-  // async getRiderCoordinatesById(@Param('id') id: string) {
-  //   return await this.coordinatesService.getRiderCoordinatesById(id);
-  // }
 
   @Get(':id')
   async getRiderCoordinatesById(@Param('id') id: string) {
-    return await this.coordinatesService.getRiderCoordinatesById(id);
-  }
-
-  @Post()
-  async saveRiderCoordinates(
-    @Body()
-    createCoordinatesDto: CreateCoordinatesDto,
-  ) {
-    return await this.coordinatesService.saveRiderCoordinates(
-      createCoordinatesDto,
-    );
+    return await this.riderCoordinatesService.getRiderCoordinatesById(id);
   }
 }

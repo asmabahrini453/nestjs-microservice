@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
-import { LoggingServiceModule } from './logging-service.module';
 import { ValidationPipe } from '@nestjs/common';
+import { LoggingServiceModule } from './logging-service.module'; // This should match the file name exactly
 
 async function bootstrap() {
   const app = await NestFactory.create(LoggingServiceModule);
