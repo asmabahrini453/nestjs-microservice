@@ -15,6 +15,7 @@ import { ClerkAuthGuard } from 'apps/auth-service/src/clerk/clerk-auth.guard';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    
     AuthServiceModule,
 
     RiderCoordinatesModule,

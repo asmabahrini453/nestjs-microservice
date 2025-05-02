@@ -5,7 +5,7 @@
   "compilerOptions": {
     "deleteOutDir": true,
     "webpack": true,
-    "tsConfigPath": "apps/logigng-service/tsconfig.app.json"
+    "tsConfigPath": "apps/logging-service/tsconfig.app.json"
   },
   "monorepo": true,
   "root": "apps/logging-service",
@@ -44,6 +44,15 @@
       "sourceRoot": "apps/rider-service/src",
       "compilerOptions": {
         "tsConfigPath": "apps/rider-service/tsconfig.app.json"
+      }
+    },
+    "user": {
+      "type": "application",
+      "root": "apps/user",
+      "entryFile": "main",
+      "sourceRoot": "apps/user/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/user/tsconfig.app.json"
       }
     }
   }
