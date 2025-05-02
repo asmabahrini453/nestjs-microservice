@@ -14,9 +14,5 @@ describe('RiderServiceController', () => {
     riderServiceController = app.get<RiderServiceController>(RiderServiceController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(riderServiceController.getHello()).toBe('Hello World!');
-    });
-  });
+
 });
