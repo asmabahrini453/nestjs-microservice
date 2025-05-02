@@ -18,9 +18,12 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@logging-service/*": ["apps/logging-service/src/*"],
-      "@rider-service/*": ["apps/rider-service/src/*"]
-    },
+      "@logging-service/*": [
+        "apps/logging-service/src/*"
+      ],
+      "@rider-service/*": [
+        "apps/rider-service/src/*"
+      ]
+    }
   }
- 
 }
